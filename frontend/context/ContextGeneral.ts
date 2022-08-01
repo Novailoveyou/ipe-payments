@@ -1,17 +1,13 @@
-import { createContext, Dispatch, SetStateAction } from 'react'
-
-type TContextGeneral = {
-  hostname: string | null
-  setHostname: Dispatch<SetStateAction<string | null>>
-  isBrowser: boolean
-  setIsBrowser: Dispatch<SetStateAction<boolean>>
-}
+import { TContextGeneral } from '@/types/index'
+import { createContext } from 'react'
 
 const ContextGeneral = createContext<TContextGeneral>({
-  hostname: '',
+  hostname: null,
   setHostname: () => {},
   isBrowser: false,
-  setIsBrowser: () => {}
+  setIsBrowser: () => {},
+  located: null,
+  setLocated: () => {}
 })
 
 export default ContextGeneral

@@ -1,20 +1,39 @@
 import type { AppProps } from 'next/app'
+import {
+  TContextGeneralIsBrowser,
+  TContextGeneralHostname,
+  TContextGeneralLocated,
+  TContextGeneral
+} from '@/types/index'
 import { useEffect, useState } from 'react'
 import { urls, ui } from '@/config/index'
 import { ContextGeneral } from '@/context/index'
 
 const App = ({ Component, pageProps, router }: AppProps) => {
-  const [hostname, setHostname] = useState<string | null>(null)
-  const [isBrowser, setIsBrowser] = useState(false)
+  const [isBrowser, setIsBrowser] = useState<TContextGeneralIsBrowser>(false)
+  const [hostname, setHostname] = useState<TContextGeneralHostname>(null)
+  const [located, setLocated] = useState<TContextGeneralLocated>(null)
+  const [company, setCompany] = useState(null)
 
   useEffect(() => setIsBrowser(true), [])
   useEffect(() => {
-    isBrowser && setHostname(window.location.host)
+    isBrowser && setHostname(window.location.hostname)
   }, [isBrowser])
+
+  useEffect(() => {
+    isBrowser &&
+      setLocated({
+        ipe: hostname === urls.domains.prod.ipe.default,
+        mba: hostname === urls.domains.prod.mba.default,
+        mip: hostname === urls.domains.prod.mip.default,
+        mipo: hostname === urls.domains.prod.mipo.default,
+        mitu: hostname === urls.domains.prod.mitu.default,
+        imo: hostname === urls.domains.prod.imo.default
+      })
+  }, [isBrowser, hostname])
 
   // console.log(urls)
   // console.log(ui)
-  console.log(hostname)
   return (
     <>
       <ContextGeneral.Provider
@@ -22,7 +41,9 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           hostname,
           setHostname,
           isBrowser,
-          setIsBrowser
+          setIsBrowser,
+          located,
+          setLocated
         }}>
         <Component {...pageProps} />
       </ContextGeneral.Provider>

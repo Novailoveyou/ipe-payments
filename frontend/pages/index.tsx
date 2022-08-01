@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import { GetStaticProps } from 'next'
-import { useAt } from '@/hooks/index'
 
 const PageHome: NextPage<{ host: any }> = ({ host }) => {
   // const at = useAt()

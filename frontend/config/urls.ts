@@ -15,25 +15,38 @@ const locales = {
   default: 'ru'
 } as const
 
+const domains = {
+  dev: {
+    // default: `localhost${ports.delimiter}${ports.dev.default}`
+    default: 'localhost'
+  },
+  prod: {
+    ipe: {
+      default: 'pay.ipo.msk.ru'
+    },
+    mba: {
+      default: 'pay.moscow.mba'
+    },
+    mip: {
+      default: 'pay.mip.institute'
+    },
+    mipo: {
+      default: 'pay.mipo.msk.ru'
+    },
+    mitu: {
+      default: 'pay.mitu.msk.ru'
+    },
+    imo: {
+      default: 'pay.imo.msk.ru'
+    }
+  }
+} as const
+
 const urls = {
   protocols,
   ports,
   locales,
-  domains: {
-    dev: {
-      default: `localhost${ports.delimiter}${ports.dev.default}`
-    },
-    prod: {
-      ipe: {
-        default: 'pay.ipo.msk.ru'
-      },
-      mba: 'pay.moscow.mba',
-      mip: 'pay.mip.institute',
-      mipo: 'pay.mipo.msk.ru',
-      mitu: 'pay.mitu.msk.ru',
-      imo: 'pay.imo.msk.ru'
-    }
-  },
+  domains,
   front: {},
   back: {},
   external: {},
