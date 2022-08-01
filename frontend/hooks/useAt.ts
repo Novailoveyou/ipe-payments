@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import { ContextGeneral } from '@/context/index'
 
 const useAt = () => {
   const { pathname, asPath, locale, query } = useRouter()
 
-  const router = useRouter()
+  const { isBrowser } = useContext(ContextGeneral)
 
-  console.log(router)
+  console.log(isBrowser)
 
   // const getSplitedPath = pathname
   //   .split('/')
