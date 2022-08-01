@@ -12,7 +12,11 @@ const ports = {
 } as const
 
 const locales = {
-  default: 'ru'
+  default: 'ru',
+  ru: 'ru',
+  en: 'en',
+  kk: 'kk_KZ',
+  uz: 'uz_UZ'
 } as const
 
 const domains = {

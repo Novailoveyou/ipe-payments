@@ -15,6 +15,7 @@ type TBreakPoints<T = string | number> = {
   [key in TGeneralBreakPointKeys]: T
 }
 
+const colors = Colors as TColors
 const breakPoints = BreakPoints as TBreakPoints<string>
 
 const delimiters = {
@@ -23,7 +24,7 @@ const delimiters = {
 } as const
 
 const ui = {
-  colors: Colors as TColors,
+  colors: { ...colors, theme: colors.alpha },
   breakPoints: {
     phone: +breakPoints.phone.slice(0, -2),
     tablet: +breakPoints.tablet.slice(0, -2),

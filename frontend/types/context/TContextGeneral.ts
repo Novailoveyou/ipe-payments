@@ -3,6 +3,10 @@ import { Dispatch, SetStateAction } from 'react'
 type TContextGeneralIsBrowser = boolean
 type TContextGeneralHostname = string | null
 type TContextGeneralLocated = {
+  ru: boolean
+  en: boolean
+  kk: boolean
+  uz: boolean
   ipe: boolean
   mba: boolean
   mip: boolean

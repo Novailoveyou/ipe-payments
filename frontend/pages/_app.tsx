@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from 'react'
 import { urls, ui } from '@/config/index'
 import { ContextGeneral } from '@/context/index'
+import { Header, Main, Footer } from '@/components/layout'
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   const [isBrowser, setIsBrowser] = useState<TContextGeneralIsBrowser>(false)
@@ -23,7 +24,11 @@ const App = ({ Component, pageProps, router }: AppProps) => {
   useEffect(() => {
     isBrowser &&
       setLocated({
-        ipe: hostname === urls.domains.prod.ipe.default,
+        ru: router.locale === urls.locales.ru,
+        en: router.locale === urls.locales.en,
+        kk: router.locale === urls.locales.kk,
+        uz: router.locale === urls.locales.uz,
+        ipe: hostname === urls.domains.prod.ipe.default || true,
         mba: hostname === urls.domains.prod.mba.default,
         mip: hostname === urls.domains.prod.mip.default,
         mipo: hostname === urls.domains.prod.mipo.default,
@@ -45,7 +50,11 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           located,
           setLocated
         }}>
-        <Component {...pageProps} />
+        <Header />
+        <Main>
+          <Component {...pageProps} />
+        </Main>
+        <Footer />
       </ContextGeneral.Provider>
     </>
   )
