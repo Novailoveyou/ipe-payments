@@ -1,0 +1,5 @@
+export { default as env } from '@/config/env'
+export { default as regex } from '@/config/regex'
+export { default as revalidate } from '@/config/revalidate'
+export { default as ui } from '@/config/ui'
+export { default as urls } from '@/config/urls'
