@@ -35,7 +35,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         mitu: hostname === urls.domains.prod.mitu.default,
         imo: hostname === urls.domains.prod.imo.default
       })
-  }, [isBrowser, hostname])
+  }, [isBrowser, hostname, router])
 
   // console.log(urls)
   // console.log(ui)
